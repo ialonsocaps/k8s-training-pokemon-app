@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-$USER
+  namespace: demo-argocd-$USER
+spec:
+  selector:
+    matchLabels:
+      app: pokemon-$USER
+  replicas: 2
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0    
+  template:
+    metadata:
+      labels:
+        app: pokemon-$USER
+        project: projectpokemon
+        version: 0.0.1
+    spec:
+      containers:
+      - name: pokemon-container
+        image: ciberado/pokemon-nodejs:0.0.1
+        ports:
+        - containerPort: 80
