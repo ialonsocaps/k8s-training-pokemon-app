@@ -1,12 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pokemon-$USER
-  namespace: demo-argocd-$USER
+  name: pokemon
 spec:
   selector:
     matchLabels:
-      app: pokemon-$USER
+      app: pokemon
   replicas: 2
   strategy:
       type: RollingUpdate
@@ -16,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon-$USER
+        app: pokemon
         project: projectpokemon
         version: 0.0.1
     spec:
