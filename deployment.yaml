@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pokemon
+  name: pokemon-asb
+  namespace: demo-argocd-asb
 spec:
   selector:
     matchLabels:
-      app: pokemon
+      app: pokemon-asb
   replicas: 2
   strategy:
       type: RollingUpdate
@@ -15,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon
+        app: pokemon-asb
         project: projectpokemon
         version: 0.0.1
     spec:
