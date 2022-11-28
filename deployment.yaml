@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pokemon
+  name: pokemon-desk3
+  namespace: demo-argocd-desk3
 spec:
   selector:
     matchLabels:
-      app: pokemon
+      app: pokemon-desk3
   replicas: 2
   strategy:
       type: RollingUpdate
@@ -15,12 +16,12 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon
+        app: pokemon-desk3
         project: projectpokemon
         version: 0.0.1
     spec:
       containers:
       - name: pokemon-container
-        image: ciberado/pokemon-nodejs:0.0.1
+        image: ialonsocaps/pokemon-nodejs:0.0.1
         ports:
         - containerPort: 80
