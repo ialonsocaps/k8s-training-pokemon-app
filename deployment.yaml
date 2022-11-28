@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pokemon
+  name: pokemon-desk2
+  namespace: demo-argocd-desk2
 spec:
   selector:
     matchLabels:
-      app: pokemon
+      app: pokemon-desk2
   replicas: 2
   strategy:
       type: RollingUpdate
@@ -15,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon
+        app: pokemon-desk2
         project: projectpokemon
         version: 0.0.1
     spec:
